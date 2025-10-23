@@ -1,8 +1,6 @@
 package com.riwitienda.pagos.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 public class Usuario {
 
