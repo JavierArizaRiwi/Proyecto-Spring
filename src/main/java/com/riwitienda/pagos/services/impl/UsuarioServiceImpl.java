@@ -25,14 +25,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Transactional
     @Override
     public UsuarioResponse crear(UsuarioRequest req) {
-        if (repo.existsById(req.getId())) {
-            throw new IllegalArgumentException("id ya existe");
-        }
+
         if (repo.existsByNombreIgnoreCase(req.getNombre())) {
             throw new IllegalArgumentException("nombre duplicado");
         }
         var e = new UsuarioEntity();
-        e.setId(req.getId());
         e.setNombre(req.getNombre());
         var saved = repo.save(e);
         return new UsuarioResponse(saved.getId(), saved.getNombre());
