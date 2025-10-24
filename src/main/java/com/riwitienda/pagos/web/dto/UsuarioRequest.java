@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class UsuarioRequest {
-    @NotBlank(message = "id es obligatorio")
+    //@NotBlank(message = "id es obligatorio")
     private String id;
 
     @NotBlank(message = "nombre es obligatorio")
