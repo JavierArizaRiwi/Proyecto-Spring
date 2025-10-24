@@ -2,13 +2,13 @@ package com.riwitienda.pagos.web.dto;
 
 
 public class UsuarioResponse {
-    private String id;
+    private Long id;
     private String nombre;
 
-    public UsuarioResponse(String id, String nombre) {
+    public UsuarioResponse(Long id, String nombre) {
         this.id = id; this.nombre = nombre;
     }
 
-    public String getId() { return id; }
+    public Long getId() { return id; }
     public String getNombre() { return nombre; }
 }
