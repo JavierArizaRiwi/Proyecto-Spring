@@ -31,22 +31,26 @@ public class UsuarioServiceImpl implements IUsuarioService {
         }
         var e = new UsuarioEntity();
         e.setNombre(req.getNombre());
+        e.setApellido(req.getApellido());
+        e.setEmail(req.getEmail());
+        e.setTelefono(req.getTelefono());
+        e.setCargo(req.getCargo());
         var saved = repo.save(e);
-        return new UsuarioResponse(saved.getId(), saved.getNombre());
+        return new UsuarioResponse(saved.getId(), saved.getNombre(),saved.getApellido(),saved.getEmail(), saved.getTelefono(),saved.getCargo());
     }
 
     @Transactional(readOnly = true)
     @Override
     public UsuarioResponse obtenerPorId(String id) {
         var e = repo.findById(id).orElseThrow(() -> new NoSuchElementException("usuario no encontrado"));
-        return new UsuarioResponse(e.getId(), e.getNombre());
+        return new UsuarioResponse(e.getId(), e.getNombre(),e.getApellido(),e.getEmail(), e.getTelefono(),e.getCargo());
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<UsuarioResponse> listar() {
         return repo.findAll().stream()
-                .map(e -> new UsuarioResponse(e.getId(), e.getNombre()))
+                .map(e -> new UsuarioResponse(e.getId(), e.getNombre(),e.getApellido(),e.getEmail(), e.getTelefono(),e.getCargo()))
                 .toList();
     }
 }
