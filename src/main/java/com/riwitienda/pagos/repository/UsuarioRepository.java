@@ -2,12 +2,15 @@ package com.riwitienda.pagos.repository;
 
 
 import com.riwitienda.pagos.domain.Usuario;
-import com.riwitienda.pagos.entity.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UsuarioRepository extends JpaRepository<UsuarioEntity, String> {
+import java.util.Optional;
 
-    boolean existsByNombreIgnoreCase(String nombre);
+public interface UsuarioRepository extends JpaRepository<Usuario, String> {
+
+
+    Optional<Usuario> findByUsername(String username);
+
 
 
 }
